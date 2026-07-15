@@ -218,6 +218,7 @@ async def predict_yolo(file: UploadFile = File(...)):
 
         image = Image.open(BytesIO(contents)).convert("RGB")
         img_np = np.array(image)
+        img_np = img_np[:, :, ::-1]  # RGB to BGR for YOLO/OpenCV
 
         # Jalankan prediksi YOLO tanpa menyimpan file
         results = model.predict(source=img_np, conf=0.3, save=False, verbose=False)
