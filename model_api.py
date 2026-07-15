@@ -220,7 +220,7 @@ async def predict_yolo(file: UploadFile = File(...)):
         img_np = np.array(image)
 
         # Jalankan prediksi YOLO tanpa menyimpan file
-        results = model.predict(source=img_np, conf=0.4, save=False, verbose=False)
+        results = model.predict(source=img_np, conf=0.3, save=False, verbose=False)
 
         predictions = []
         for r in results:
